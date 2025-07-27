@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort Array Manually</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <h1>Sort an Array of Strings</h1>
+    <p id="original"></p>
+    <p id="sorted"></p>
+    <script>
+        function sortStringsManually(arr) {
+            let newArray = [...arr];
+            let n = newArray.length;
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (newArray[j] > newArray[j + 1]) {
+                        let temp = newArray[j];
+                        newArray[j] = newArray[j + 1];
+                        newArray[j + 1] = temp;
+                    }
+                }
+            }
+            return newArray;
+        }
+        const originalArray = ['Banana', 'Apple', 'Cherry', 'Date'];
+        const sortedArray = sortStringsManually(originalArray);
+        document.getElementById('original').textContent = `Original Array: ${originalArray.join(', ')}`;
+        document.getElementById('sorted').textContent = `Sorted Array: ${sortedArray.join(', ')}`;
+    </script>
+</body>
+</html>

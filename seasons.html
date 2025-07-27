@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get The Season</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <h1> Get The Season</h1>
+    <div id="results"></div>
+
+    <script>
+        function getSeason(monthName) {
+            let season = '';
+            switch (monthName.toLowerCase()) {
+                case 'december':
+                case 'january':
+                case 'february':
+                    season = 'Winter ';
+                    break;
+                case 'march':
+                case 'april':
+                case 'may':
+                    season = 'Spring ';
+                    break;
+                case 'june':
+                case 'july':
+                case 'august':
+                    season = 'Summer ';
+                    break;
+                case 'september':
+                case 'october':
+                case 'november':
+                    season = 'Autumn ';
+                    break;
+                default:
+                    season = 'Invalid month';
+            }
+            return season;
+        }
+
+        const container = document.getElementById('results');
+
+        function displaySeason(month) {
+            const result = getSeason(month);
+            container.innerHTML += `<p>The season for <b>${month}</b> is <b>${result}</b></p>`;
+        }
+        
+        displaySeason('January');
+        displaySeason('May');
+        displaySeason('August');
+        displaySeason('November');
+        displaySeason('Blah');
+
+    </script>
+</body>
+</html>

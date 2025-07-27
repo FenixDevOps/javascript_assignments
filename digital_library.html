@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Library</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <h1>My Digital Library 📖</h1>
+    <div id="book-list-container"></div>
+
+    <script>
+        const library = {
+            books: [],
+
+
+            addBook: function(book) {
+                this.books.push(book);
+            },
+
+            listBooks: function() {
+                const container = document.getElementById('book-list-container');
+                container.innerHTML = '<h2>Available Books:</h2>'; 
+                this.books.forEach(book => {
+                    const title = book.title ?? 'No Title';
+                    const author = book.author ?? 'Unknown Author';
+
+                    container.innerHTML += `
+                        <p>
+                            <b>Title:</b> ${title}<br>
+                            <b>Author:</b> ${author}
+                        </p>
+                        <hr>
+                    `;
+                });
+            }
+        };
+        library.addBook({ title: '1984', author: 'George Orwell' });
+        library.addBook({ title: 'A Brief History of Time', author: 'Stephen Hawking' });
+        library.addBook({ title: 'The Silent Patient' }); 
+        library.listBooks();
+    </script>
+
+</body>
+</html>

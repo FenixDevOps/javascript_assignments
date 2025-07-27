@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Verdict</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { margin: 0.5rem 0; font-size: 1.1rem;}
+    </style>
+</head>
+<body>
+    <h1>🎬 Movie Verdicts</h1>
+
+    <script>
+
+        function printMovieVerdict(movie) {
+            const title = movie.title ?? 'Untitled Movie';
+            const rating = movie.rating;
+            let verdict = '';
+            if (rating === undefined || rating === null) {
+                verdict = 'Rating not available';
+            } else if (rating >= 9.0) {
+                verdict = 'Blockbuster ';
+            } else if (rating >= 8.0) {
+                verdict = 'Superhit ';
+            } else if (rating >= 7.0) {
+                verdict = 'Hit ';
+            } else if (rating >= 5.0) {
+                verdict = 'Average ';
+            } else {
+                verdict = 'Flop ';
+            }
+
+            document.body.innerHTML += `<p><b>${title}:</b> ${verdict}</p>`;
+        }
+
+   
+        const blockbusterMovie = { title: 'The Dark Knight', rating: 9.0 };
+        const superhitMovie = { title: 'Interstellar', rating: 8.7 };
+        const hitMovie = { title: 'The Avengers', rating: 7.9 };
+        const averageMovie = { title: 'Justice League', rating: 6.1 };
+        const flopMovie = { title: 'Battlefield Earth', rating: 2.5 };
+        const unratedMovie = { title: 'Upcoming Sci-Fi Film' };
+        printMovieVerdict(blockbusterMovie);
+        printMovieVerdict(superhitMovie);
+        printMovieVerdict(hitMovie);
+        printMovieVerdict(averageMovie);
+        printMovieVerdict(flopMovie);
+        printMovieVerdict(unratedMovie);
+    </script>
+
+</body>
+</html>

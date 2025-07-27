@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Book Display</title>
+</head>
+<body>
+    <h1>Book List</h1>
+
+    <script>
+        function displayBook(book) {
+            const title = book.title ?? 'No Title';
+            const author = book.author ?? 'Unknown Author';
+            const year = book.yearPublished ?? 'N/A';
+
+            document.body.innerHTML += `
+                <hr>
+                <p>
+                    <b>Title:</b> ${title}<br>
+                    <b>Author:</b> ${author}<br>
+                    <b>Year:</b> ${year}
+                </p>
+            `;
+        }
+
+        const bookWithAllInfo = {
+            title: 'Dune',
+            author: 'Frank Herbert',
+            yearPublished: 1965
+        };
+
+        const bookWithMissingInfo = {
+            title: 'Project Hail Mary'
+      
+        };
+
+        // Display the books
+        displayBook(bookWithAllInfo);
+        displayBook(bookWithMissingInfo);
+    </script>
+
+</body>
+</html>

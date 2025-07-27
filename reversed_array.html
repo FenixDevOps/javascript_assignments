@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse Array Manually</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <h1>Reverse an Array</h1>
+    <p id="original"></p>
+    <p id="reversed"></p>
+
+    <script>
+        function reverseArrayManually(arr) {
+            const newArray = [];
+            for (let i = arr.length - 1; i >= 0; i--) {
+                newArray.push(arr[i]);
+            }
+            return newArray;
+        }
+
+        const originalArray = [1, 2, 3, 4, 5];
+        const reversedArray = reverseArrayManually(originalArray);
+
+        document.getElementById('original').textContent = `Original Array: ${originalArray.join(',')}`;
+        document.getElementById('reversed').textContent = `Reversed Array: ${reversedArray.join(',')}`;
+    </script>
+</body>
+</html>

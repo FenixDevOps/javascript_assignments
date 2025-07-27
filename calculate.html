@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { font-size: 1.1rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <div id="results"></div>
+
+    <script>
+        function calculate(num1, num2, operator) {
+            switch (operator) {
+                case '+':
+                    return num1 + num2;
+                case '-':
+                    return num1 - num2;
+                case '*':
+                    return num1 * num2;
+                case '/':
+                    if (num2 === 0) {
+                        return 'Error: Cannot divide by zero';
+                    }
+                    return num1 / num2;
+                default:
+                    return 'Error: Invalid operator';
+            }
+        }
+
+        const container = document.getElementById('results');
+
+        function displayResult(num1, num2, op) {
+            const result = calculate(num1, num2, op);
+            container.innerHTML += `<p>${num1} ${op} ${num2} = <b>${result}</b></p>`;
+        }
+
+        displayResult(10, 5, '+');
+        displayResult(10, 5, '-');
+        displayResult(10, 5, '*');
+        displayResult(10, 5, '/');
+        displayResult(10, 0, '/'); 
+        displayResult(10, 5, '%');
+
+    </script>
+</body>
+</html>

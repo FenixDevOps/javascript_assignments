@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Score Calculator</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        p { font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <h1> Student Scores</h1>
+
+    <script>
+
+        function calculateTotalScore(studentsArray) {
+
+            const total = studentsArray.reduce((total, student) => total + student.score, 0);
+            return total;
+        }
+        const students = [
+            { name: 'Ravi', score: 85 },
+            { name: 'Priya', score: 92 },
+            { name: 'Amit', score: 78 }
+        ];
+
+
+        const totalScore = calculateTotalScore(students);
+
+
+        document.body.innerHTML += `<p><b>The total score of all students is: ${totalScore}</b></p>`;
+    </script>
+</body>
+</html>

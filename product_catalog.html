@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        h3 { margin-bottom: 0.5rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        ul { margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>📦 Product Catalog</h1>
+    <div id="result-container"></div>
+
+    <script>
+        const productCatalog = {
+            products: [],
+            addProduct: function(product) {
+                this.products.push(product);
+            },
+            groupByCategory: function() {
+                return this.products.reduce((acc, product) => {
+                    const category = product.category;
+                    if (!acc[category]) {
+                        acc[category] = [];
+                    }
+                    acc[category].push(product);
+                    return acc;
+                }, {});
+            }
+        };
+
+        productCatalog.addProduct({ name: 'Laptop', category: 'Electronics', price: 1200 });
+        productCatalog.addProduct({ name: 'T-Shirt', category: 'Apparel', price: 20 });
+        productCatalog.addProduct({ name: 'Dune', category: 'Books', price: 15 });
+        productCatalog.addProduct({ name: 'Mouse', category: 'Electronics', price: 25 });
+
+        const groupedProducts = productCatalog.groupByCategory();
+        
+        const container = document.getElementById('result-container');
+        let htmlOutput = '';
+
+        for (const category in groupedProducts) {
+            htmlOutput += `<h3>${category}</h3>`;
+            htmlOutput += '<ul>';
+            
+            const productsInCategory = groupedProducts[category];
+            productsInCategory.forEach(product => {
+                htmlOutput += `<li>${product.name} - $${product.price}</li>`;
+            });
+            
+            htmlOutput += '</ul>';
+        }
+
+        container.innerHTML = htmlOutput;
+    </script>
+</body>
+</html>
